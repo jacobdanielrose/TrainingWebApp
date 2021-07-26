@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {NgForm} from "@angular/forms";
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupComponent implements OnInit {
 
+  // TODO: take care of this??
+  maxDate: Date = new Date();
+
   constructor() { }
 
   ngOnInit(): void {
+    this.maxDate = new Date();
+  }
+
+  onSubmit(form: NgForm) {
+
   }
 
 }
