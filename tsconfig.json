@@ -7,6 +7,8 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "noImplicitReturns": true,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
     "noFallthroughCasesInSwitch": true,
     "sourceMap": true,
     "declaration": false,
@@ -24,7 +26,6 @@
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,
-    "strictPropertyInitialization": false,
     "strictInputAccessModifiers": true,
     "strictTemplates": true
   }
