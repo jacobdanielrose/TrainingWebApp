@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-import {TrainingService} from "../training.service";
-import {Exercise} from "../exercise.model";
-import {NgForm} from "@angular/forms";
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+
+import { TrainingService } from '../training.service';
+import { Exercise } from '../exercise.model';
 
 @Component({
   selector: 'app-new-training',
@@ -9,16 +10,16 @@ import {NgForm} from "@angular/forms";
   styleUrls: ['./new-training.component.scss']
 })
 export class NewTrainingComponent implements OnInit {
-
   exercises: Exercise[] = [];
 
   constructor(private trainingService: TrainingService) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
     this.exercises = this.trainingService.getAvailableExercises();
   }
 
   onStartTraining(form: NgForm) {
-    this.trainingService.startExercise(form.value.id);
+    this.trainingService.startExercise(form.value.exercise);
   }
+
 }

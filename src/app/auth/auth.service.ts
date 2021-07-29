@@ -1,18 +1,18 @@
-import {User} from "./user.model";
-import {AuthData} from "./auth-data.model";
-import {Subject} from "rxjs";
-import {Injectable} from "@angular/core";
-import {Router} from "@angular/router";
+import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
+import { Subject } from 'rxjs/Subject';
+
+import { User } from './user.model';
+import { AuthData } from './auth-data.model';
 
 @Injectable()
 export class AuthService {
-
   authChange = new Subject<boolean>();
-  private user: User = <User>{};
+  private user: User;
 
   constructor(private router: Router) {}
 
-  registerUser(authData: AuthData) : void {
+  registerUser(authData: AuthData) {
     this.user = {
       email: authData.email,
       userId: Math.round(Math.random() * 10000).toString()
@@ -20,7 +20,7 @@ export class AuthService {
     this.authSuccessfully();
   }
 
-  login(authData: AuthData) : void {
+  login(authData: AuthData) {
     this.user = {
       email: authData.email,
       userId: Math.round(Math.random() * 10000).toString()
@@ -28,24 +28,23 @@ export class AuthService {
     this.authSuccessfully();
   }
 
-  logout(): void {
-    this.user = <User>{};
+  logout() {
+    this.user = null;
     this.authChange.next(false);
-    this.router.navigate(['/login']).then();
+    this.router.navigate(['/login']);
   }
 
-  getUser(): User {
+  getUser() {
     return { ...this.user };
   }
 
-  isAuth(): boolean {
-    // TODO: FIX THIS FUCKING ISAUTH FUNCTION
-    // this isAuth() DOES NOT WORK
-    return this.user != <User>{};
+  isAuth() {
+    return this.user != null;
   }
 
-  private authSuccessfully(): void{
+  private authSuccessfully() {
     this.authChange.next(true);
-    this.router.navigate(['/training']).then();
-  };
+    this.router.navigate(['/training']);
+  }
 }
+

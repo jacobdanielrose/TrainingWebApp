@@ -3,7 +3,18 @@ a {
   color: white;
 }
 
-a:hover ,
+a:hover,
 a:active {
-  color: lightgrey;
+  color: lightgray;
+}
+
+.navigation-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-caption {
+  display: inline-block;
+  padding-left: 6px;
 }
